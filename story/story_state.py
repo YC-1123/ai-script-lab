@@ -8,7 +8,8 @@ class StoryState:
         self.current_index = 0
         self.flags = {
             "冲突已触发": False,
-            "理解已建立": False
+            "理解已建立": False,
+            "理解已触发": False
         }
 
     def get_current_phase(self) -> str:
