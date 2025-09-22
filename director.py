@@ -15,6 +15,7 @@ class StoryDirector:
         self.story_state = StoryState()
         self.coordinator = ResponseCoordinator(self.character_names)
         self.phase_index = 0
+        self.watch_mode = False  # 默认导演模式
         self.input_router = InputRouter()
 
     async def initialize_characters(self):
@@ -27,6 +28,9 @@ class StoryDirector:
 
     def handle_user_input(self):
         """处理用户输入，支持情绪切换和剧情注入"""
+        if self.watch_mode:
+            return  # 观看模式跳过用户输入
+            
         print("\n【用户输入】输入指令（直接回车跳过）：")
         print("- 切换情绪 [情绪名称]")
         print("- 注入剧情 [剧情内容]")
@@ -66,14 +70,15 @@ class StoryDirector:
         round_count = 1
         previous_responses = []
         previous_speakers = []
+        phase_round_count = 1  # 当前阶段的轮数计数
         
-        while self.story_state.current_index < len(self.story_state.phases) - 1:
+        while self.story_state.current_index < len(self.story_state.phases):
             phase = self.story_state.get_current_phase()
                         
             # 每轮剧情前处理用户输入
             self.handle_user_input()
 
-            print(f"\n—— 第{round_count}轮 · 剧情阶段【{phase}】——")
+            print(f"\n—— 第{round_count}轮 · 剧情阶段【{phase}】(阶段第{phase_round_count}轮) ——")
             
             all_responses = []
             current_speakers = []
@@ -96,12 +101,24 @@ class StoryDirector:
             
             # 检查是否触发下一阶段
             combined_dialogue = " ".join(all_responses)
+            phase_advanced = False
+            
             if check_phase_trigger(combined_dialogue, phase):
                 print(f"\n【系统】检测到阶段触发条件，推进到下一阶段")
                 self.story_state.advance_phase()
+                phase_advanced = True
+                phase_round_count = 1  # 重置阶段轮数
+            else:
+                phase_round_count += 1
+            
+            # 特殊处理：确保理解阶段至少运行2轮
+            if phase == "理解" and phase_round_count >= 3 and not phase_advanced:
+                print(f"\n【系统】理解阶段完成，故事达到圆满结局")
+                break
             
             round_count += 1
-            if round_count > 10:  # 防止无限循环
+            if round_count > 15:  # 防止无限循环，增加限制
+                print(f"\n【系统】达到最大轮数限制，故事结束")
                 break
 
         print("\n【系统】剧情推进结束")

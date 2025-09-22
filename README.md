@@ -147,7 +147,7 @@ class CharacterContextManager:
 ```
 
 **开发成果**：
-- 实现了 `StoryDirector` 作为总控制器
+- 实现了 `Director` 作为总控制器
 - 添加了 `ResponseCoordinator` 确保角色轮流发言
 - 优化了prompt构建逻辑，提高生成质量
 - 完善了错误处理和系统稳定性
