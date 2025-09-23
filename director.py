@@ -10,7 +10,7 @@ from user_input.input_router import InputRouter
 class StoryDirector:
     def __init__(self):
         # 定义角色名称与剧情阶段
-        self.character_names = ["艾琳", "诺亚"]
+        self.character_names = ["莉亚", "凯德"]
         self.contexts = {}
         self.story_state = StoryState()
         self.coordinator = ResponseCoordinator(self.character_names)
@@ -117,7 +117,7 @@ class StoryDirector:
                 break
             
             round_count += 1
-            if round_count > 15:  # 防止无限循环，增加限制
+            if round_count > 10:  # 防止无限循环，增加限制
                 print(f"\n【系统】达到最大轮数限制，故事结束")
                 break
 

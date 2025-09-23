@@ -23,7 +23,7 @@
 ```python
 # 角色形象生成
 await server.call_tool("generate_character_image", {
-    "character_name": "艾琳",
+    "character_name": "莉亚",
     "description": "未来科技风格女性飞行员",
     "style": "cinematic"
 })
@@ -40,7 +40,7 @@ await server.call_tool("generate_scene_image", {
 ```python
 # 角色配音生成
 await server.call_tool("generate_character_voice", {
-    "character_name": "艾琳",
+    "character_name": "莉亚",
     "text": "航线参数已校准",
     "emotion": "professional"
 })

@@ -71,8 +71,8 @@ class MultimediaMCPDemo:
             emotion = arguments.get("emotion", "neutral")
             
             voice_config = {
-                "艾琳": "专业女性声音，略带科技感",
-                "诺亚": "温和男性声音，带有好奇语调"
+                "莉亚": "专业女性声音，略带科技感",
+                "凯德": "温和男性声音，带有好奇语调"
             }
             
             return {
@@ -108,10 +108,10 @@ async def demo():
     
     print("=== AI剧本工坊多媒体MCP集成演示 ===\n")
     
-    # 1. 生成艾琳的角色形象
+    # 1. 生成莉亚的角色形象
     print("1️⃣ 生成角色形象")
     result = await tools.call_multimedia_tool("generate_character_image", {
-        "character_name": "艾琳",
+        "character_name": "莉亚",
         "description": "未来科技风格的女性飞行员，短发，专业制服，在星舰驾驶舱",
         "style": "realistic"
     })
@@ -123,7 +123,7 @@ async def demo():
     # 2. 生成角色对话配音
     print("2️⃣ 生成角色配音")
     result = await tools.call_multimedia_tool("generate_character_voice", {
-        "character_name": "艾琳",
+        "character_name": "莉亚",
         "text": "航线参数已校准，预计12小时后抵达目标星系。是否需要调整航速？",
         "emotion": "professional"
     })
@@ -132,10 +132,10 @@ async def demo():
     
     print("\n" + "="*50 + "\n")
     
-    # 3. 生成诺亚的配音
-    print("3️⃣ 生成诺亚配音")
+    # 3. 生成凯德的配音
+    print("3️⃣ 生成凯德配音")
     result = await tools.call_multimedia_tool("generate_character_voice", {
-        "character_name": "诺亚", 
+        "character_name": "凯德", 
         "text": "你看起来不像是船员。谁允许你进入这个区域的？",
         "emotion": "neutral"
     })

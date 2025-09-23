@@ -58,7 +58,7 @@ python3 multimedia_demo.py
 ### 生成角色形象
 ```python
 await server.call_tool("generate_character_image", {
-    "character_name": "艾琳",
+    "character_name": "莉亚",
     "description": "未来科技风格女性飞行员",
     "style": "realistic"
 })
@@ -67,7 +67,7 @@ await server.call_tool("generate_character_image", {
 ### 生成角色配音
 ```python
 await server.call_tool("generate_character_voice", {
-    "character_name": "艾琳",
+    "character_name": "莉亚",
     "text": "航线参数已校准",
     "emotion": "professional"
 })

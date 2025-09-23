@@ -167,8 +167,8 @@ class MultimediaMCPTools:
         
         # 模拟ElevenLabs API调用
         voice_config = {
-            "艾琳": {"voice_id": "female_tech", "stability": 0.8},
-            "诺亚": {"voice_id": "male_casual", "stability": 0.7}
+            "莉亚": {"voice_id": "female_tech", "stability": 0.8},
+            "凯德": {"voice_id": "male_casual", "stability": 0.7}
         }
         
         config = voice_config.get(char_name, {"voice_id": "default", "stability": 0.5})
@@ -227,7 +227,7 @@ async def demo_multimedia_tools():
     
     # 生成角色形象
     result = await tools.call_multimedia_tool("generate_character_image", {
-        "character_name": "艾琳",
+        "character_name": "莉亚",
         "description": "未来科技风格的女性飞行员，短发，专业制服",
         "style": "realistic"
     })
@@ -237,7 +237,7 @@ async def demo_multimedia_tools():
     
     # 生成角色配音
     result = await tools.call_multimedia_tool("generate_character_voice", {
-        "character_name": "艾琳", 
+        "character_name": "莉亚", 
         "text": "航线参数已校准，预计12小时后抵达目标星系",
         "emotion": "neutral"
     })

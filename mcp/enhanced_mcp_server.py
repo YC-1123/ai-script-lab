@@ -44,7 +44,7 @@ async def enhanced_demo():
     # 生成角色形象
     print("\n🎨 生成角色形象...")
     result = await server.call_tool("generate_character_image", {
-        "character_name": "艾琳",
+        "character_name": "莉亚",
         "description": "未来科技风格的女性飞行员，短发，专业制服，在星舰驾驶舱",
         "style": "cinematic"
     })
@@ -55,16 +55,16 @@ async def enhanced_demo():
     # 运行对话并生成配音
     print("\n🎭 生成对话...")
     dialogue_result = await server.call_tool("generate_dialogue", {
-        "character_name": "艾琳",
+        "character_name": "莉亚",
         "phase": "相遇"
     })
     dialogue_text = dialogue_result["content"][0]["text"]
-    print(f"艾琳：{dialogue_text}")
+    print(f"莉亚：{dialogue_text}")
     
     # 为对话生成配音
     print("\n🎤 生成配音...")
     voice_result = await server.call_tool("generate_character_voice", {
-        "character_name": "艾琳",
+        "character_name": "莉亚",
         "text": dialogue_text,
         "emotion": "professional"
     })
